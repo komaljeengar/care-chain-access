@@ -144,20 +144,20 @@ const Dashboard = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           <div>
-            <h1 className="text-3xl font-bold mb-2">Welcome back, {user?.name}!</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-3xl font-bold mb-2 animate-fade-up">Welcome back, {user?.name}!</h1>
+            <p className="text-muted-foreground animate-fade-up" style={{ animationDelay: '0.1s' }}>
               Your health data is secure and up to date
             </p>
           </div>
           
-          <div className="flex items-center space-x-4 mt-4 md:mt-0">
+          <div className="flex items-center space-x-4 mt-4 md:mt-0 animate-fade-up" style={{ animationDelay: '0.2s' }}>
             <div className="flex items-center space-x-2">
-              <Badge className="bg-secondary/10 text-secondary border-secondary/20">
+              <Badge className="medical-success">
                 <Shield className="w-3 h-3 mr-1" />
                 World ID Verified
               </Badge>
             </div>
-            <Button onClick={() => navigate('/patient/records')} className="gradient-primary">
+            <Button onClick={() => navigate('/patient/records')} className="glass-button">
               <Upload className="w-4 h-4 mr-2" />
               Upload Records
             </Button>
@@ -167,13 +167,13 @@ const Dashboard = () => {
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {quickStats.map((stat, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-all duration-300">
+            <Card key={index} className="p-6 hover:shadow-glow transition-all duration-300 animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-muted-foreground text-sm">{stat.label}</p>
-                  <p className="text-2xl font-bold mt-1">{stat.value}</p>
+                  <p className="text-2xl font-bold mt-1 text-gradient">{stat.value}</p>
                 </div>
-                <div className={`${stat.color}`}>
+                <div className={`${stat.color} animate-glow-pulse`}>
                   {stat.icon}
                 </div>
               </div>
@@ -185,7 +185,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Medical Records Overview */}
           <div className="lg:col-span-2">
-            <Card className="p-6">
+            <Card className="p-6 animate-fade-up" style={{ animationDelay: '0.3s' }}>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold">Recent Medical Records</h2>
                 <Button variant="outline" onClick={() => navigate('/patient/records')}>
@@ -194,8 +194,8 @@ const Dashboard = () => {
               </div>
               
               <div className="space-y-4">
-                {recentRecords.map((record) => (
-                  <div key={record.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/30 transition-colors">
+                {recentRecords.map((record, index) => (
+                  <div key={record.id} className="flex items-center justify-between p-4 border border-primary/20 rounded-lg hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 animate-fade-up" style={{ animationDelay: `${0.4 + index * 0.1}s` }}>
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-2">
                         {getStatusIcon(record.status)}
@@ -210,7 +210,7 @@ const Dashboard = () => {
                         </p>
                       </div>
                     </div>
-                    <Button variant="ghost" size="sm">
+                    <Button variant="ghost" size="sm" className="hover:bg-primary/10">
                       View
                     </Button>
                   </div>
@@ -219,7 +219,7 @@ const Dashboard = () => {
             </Card>
 
             {/* AI Health Insights */}
-            <Card className="p-6 mt-6">
+            <Card className="p-6 mt-6 animate-fade-up" style={{ animationDelay: '0.4s' }}>
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold">AI Health Insights</h2>
                 <Button variant="outline" onClick={() => navigate('/patient/ai-chat')}>
@@ -230,8 +230,8 @@ const Dashboard = () => {
               
               <div className="space-y-4">
                 {healthInsights.map((insight, index) => (
-                  <div key={index} className="flex items-start space-x-4 p-4 border rounded-lg">
-                    <div className="mt-0.5">
+                  <div key={index} className="flex items-start space-x-4 p-4 border border-primary/20 rounded-lg hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 animate-fade-up" style={{ animationDelay: `${0.5 + index * 0.1}s` }}>
+                    <div className="mt-0.5 animate-glow-pulse">
                       {getInsightIcon(insight.type)}
                     </div>
                     <div className="flex-1">
@@ -239,7 +239,7 @@ const Dashboard = () => {
                       <p className="text-sm text-muted-foreground mb-2">
                         {insight.description}
                       </p>
-                      <Button variant="link" className="p-0 text-sm h-auto">
+                      <Button variant="link" className="p-0 text-sm h-auto hover:text-primary">
                         {insight.action}
                       </Button>
                     </div>
@@ -252,21 +252,21 @@ const Dashboard = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Emergency Contact */}
-            <Card className="p-6 bg-gradient-to-br from-red-50 to-red-100 border-red-200">
+            <Card className="p-6 bg-gradient-to-br from-red-500/10 to-red-500/5 border-red-500/30 animate-fade-up" style={{ animationDelay: '0.5s' }}>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-semibold text-red-900">Emergency Access</h3>
-                <Phone className="w-5 h-5 text-red-600" />
+                <h3 className="font-semibold text-red-400">Emergency Access</h3>
+                <Phone className="w-5 h-5 text-red-400 animate-glow-pulse" />
               </div>
-              <p className="text-sm text-red-800 mb-4">
+              <p className="text-sm text-red-300 mb-4">
                 In case of emergency, authorized medical staff can access your critical medical information instantly.
               </p>
-              <Button variant="outline" size="sm" className="w-full border-red-300 text-red-700 hover:bg-red-50">
+              <Button variant="outline" size="sm" className="w-full border-red-500/30 text-red-400 hover:bg-red-500/10">
                 Emergency Settings
               </Button>
             </Card>
 
             {/* Active Permissions */}
-            <Card className="p-6">
+            <Card className="p-6 animate-fade-up" style={{ animationDelay: '0.6s' }}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold">Active Permissions</h3>
                 <Button variant="outline" size="sm" onClick={() => navigate('/patient/permissions')}>
@@ -276,7 +276,7 @@ const Dashboard = () => {
               
               <div className="space-y-3">
                 {activePermissions.map((permission, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                  <div key={index} className="flex items-center justify-between p-3 border border-primary/20 rounded-lg hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 animate-fade-up" style={{ animationDelay: `${0.7 + index * 0.1}s` }}>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
                         <p className="font-medium text-sm">{permission.doctor}</p>
@@ -297,14 +297,14 @@ const Dashboard = () => {
             </Card>
 
             {/* Upcoming Appointments */}
-            <Card className="p-6">
+            <Card className="p-6 animate-fade-up" style={{ animationDelay: '0.7s' }}>
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold">Upcoming Appointments</h3>
-                <Calendar className="w-5 h-5 text-muted-foreground" />
+                <Calendar className="w-5 h-5 text-muted-foreground animate-glow-pulse" />
               </div>
               
               <div className="space-y-3">
-                <div className="p-3 border rounded-lg">
+                <div className="p-3 border border-primary/20 rounded-lg hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 animate-fade-up" style={{ animationDelay: '0.8s' }}>
                   <div className="flex justify-between items-center mb-2">
                     <p className="font-medium text-sm">Dr. Emily Rodriguez</p>
                     <Badge variant="outline" className="text-xs">
@@ -316,7 +316,7 @@ const Dashboard = () => {
                   </p>
                 </div>
                 
-                <div className="p-3 border rounded-lg">
+                <div className="p-3 border border-primary/20 rounded-lg hover:bg-primary/5 hover:border-primary/40 transition-all duration-300 animate-fade-up" style={{ animationDelay: '0.9s' }}>
                   <div className="flex justify-between items-center mb-2">
                     <p className="font-medium text-sm">Lab Appointment</p>
                     <Badge variant="outline" className="text-xs">
@@ -329,7 +329,7 @@ const Dashboard = () => {
                 </div>
               </div>
               
-              <Button variant="outline" size="sm" className="w-full mt-4">
+              <Button variant="outline" size="sm" className="w-full mt-4 hover:bg-primary/10">
                 Schedule New
               </Button>
             </Card>

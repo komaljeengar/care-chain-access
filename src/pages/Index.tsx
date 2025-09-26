@@ -79,22 +79,22 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background animated-bg floating-particles">
       {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+      <header className="glass-header sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 gradient-hero rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center shadow-glow animate-glow-pulse">
               <Shield className="w-5 h-5 text-white" />
             </div>
             <span className="text-2xl font-bold text-gradient">MedVault</span>
           </div>
           
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" onClick={() => navigate('/auth/login')}>
+            <Button variant="ghost" onClick={() => navigate('/auth/login')} className="text-foreground hover:bg-primary/10">
               Sign In
             </Button>
-            <Button onClick={handleGetStarted} className="gradient-primary">
+            <Button onClick={handleGetStarted} className="glass-button">
               Get Started
             </Button>
           </div>
@@ -103,12 +103,12 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="py-20 gradient-hero text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="absolute inset-0 bg-black/20"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="animate-fade-up">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Own Your
-              <span className="block text-yellow-200">Medical Data</span>
+              <span className="block text-gradient-secondary animate-glow-pulse">Medical Data</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
               The first Web3 platform that gives patients complete control over their medical records with blockchain security, AI insights, and biometric authentication.
@@ -116,11 +116,11 @@ const Index = () => {
           </div>
           
           <div className="flex flex-col md:flex-row gap-4 justify-center items-center animate-fade-up">
-            <Button size="lg" onClick={handleGetStarted} className="bg-white text-primary hover:bg-white/90 shadow-lg">
+            <Button size="lg" onClick={handleGetStarted} className="glass-button text-lg px-8 py-4">
               Create Your Vault
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" onClick={() => handleDemoAccess('patient')}>
+            <Button size="lg" variant="outline" className="border-primary/50 text-white hover:bg-primary/10 backdrop-blur-sm" onClick={() => handleDemoAccess('patient')}>
               <Smartphone className="mr-2 w-5 h-5" />
               Try Demo
             </Button>
@@ -128,7 +128,7 @@ const Index = () => {
 
           <div className="flex justify-center space-x-6 mt-12">
             {technologies.map((tech, index) => (
-              <Badge key={index} className={`${tech.color} px-4 py-2 text-sm font-medium animate-slide-in`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Badge key={index} className={`${tech.color} px-4 py-2 text-sm font-medium animate-slide-in backdrop-blur-sm`} style={{ animationDelay: `${index * 0.1}s` }}>
                 {tech.name}
               </Badge>
             ))}
@@ -137,12 +137,12 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {stats.map((stat, index) => (
-              <div key={index} className="animate-fade-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
+              <div key={index} className="glass-card p-6 animate-fade-up hover:shadow-glow-blue transition-all duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
                   {stat.number}
                 </div>
                 <div className="text-muted-foreground font-medium">
@@ -155,19 +155,19 @@ const Index = () => {
       </section>
 
       {/* Problem Statement */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Medical Data is <span className="text-primary">Fragmented</span>
+              Medical Data is <span className="text-gradient">Fragmented</span>
             </h2>
             <p className="text-xl text-muted-foreground mb-8">
               Today's healthcare system traps your medical data in isolated silos. Patients lose control, doctors lack complete information, and emergency care suffers from incomplete records.
             </p>
             
-            <Card className="glass-card p-8 max-w-2xl mx-auto">
+            <Card className="glass-card p-8 max-w-2xl mx-auto animate-scale-in hover:shadow-glow-purple transition-all duration-300">
               <div className="flex items-center justify-center mb-4">
-                <CheckCircle className="w-12 h-12 text-secondary" />
+                <CheckCircle className="w-12 h-12 text-secondary animate-glow-pulse" />
               </div>
               <h3 className="text-2xl font-bold mb-4">MedVault Changes Everything</h3>
               <p className="text-muted-foreground">
@@ -179,7 +179,7 @@ const Index = () => {
       </section>
 
       {/* Features Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
@@ -192,8 +192,8 @@ const Index = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-all duration-300 animate-fade-up border-l-4 border-l-primary" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="mb-4">
+              <Card key={index} className="glass-card p-6 hover:shadow-glow transition-all duration-300 animate-fade-up border-l-4 border-l-primary hover:border-l-secondary" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="mb-4 animate-glow-pulse">
                   {feature.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
@@ -205,7 +205,7 @@ const Index = () => {
       </section>
 
       {/* Demo Section */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 to-secondary/10">
+      <section className="py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
             Experience MedVault
@@ -215,9 +215,9 @@ const Index = () => {
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 hover:shadow-xl transition-all duration-300 cursor-pointer group" onClick={() => handleDemoAccess('patient')}>
+            <Card className="glass-card p-8 hover:shadow-glow transition-all duration-300 cursor-pointer group animate-fade-up" onClick={() => handleDemoAccess('patient')}>
               <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform animate-glow-pulse">
                   <Users className="w-8 h-8 text-primary" />
                 </div>
               </div>
@@ -225,15 +225,15 @@ const Index = () => {
               <p className="text-muted-foreground mb-6">
                 Control your medical records, manage permissions, and chat with AI health assistant.
               </p>
-              <Button className="w-full gradient-primary group-hover:shadow-glow">
+              <Button className="w-full glass-button group-hover:shadow-glow-purple">
                 Try Patient Demo
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Card>
 
-            <Card className="p-8 hover:shadow-xl transition-all duration-300 cursor-pointer group" onClick={() => handleDemoAccess('doctor')}>
+            <Card className="glass-card p-8 hover:shadow-glow-blue transition-all duration-300 cursor-pointer group animate-fade-up" style={{ animationDelay: '0.1s' }} onClick={() => handleDemoAccess('doctor')}>
               <div className="flex items-center justify-center mb-6">
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform animate-glow-pulse">
                   <Star className="w-8 h-8 text-secondary" />
                 </div>
               </div>
@@ -241,7 +241,7 @@ const Index = () => {
               <p className="text-muted-foreground mb-6">
                 Access patient records, request permissions, and leverage AI clinical support.
               </p>
-              <Button className="w-full gradient-secondary group-hover:shadow-glow">
+              <Button className="w-full glass-button-secondary group-hover:shadow-glow">
                 Try Doctor Demo
                 <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -259,7 +259,7 @@ const Index = () => {
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Join thousands of patients and healthcare providers who trust MedVault with their most important data.
           </p>
-          <Button size="lg" onClick={handleGetStarted} className="bg-white text-primary hover:bg-white/90 shadow-lg">
+          <Button size="lg" onClick={handleGetStarted} className="glass-button text-lg px-8 py-4">
             Create Your MedVault
             <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
@@ -267,11 +267,11 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-background border-t py-12">
+      <footer className="glass-header py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-2 mb-4 md:mb-0">
-              <div className="w-8 h-8 gradient-hero rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 gradient-primary rounded-lg flex items-center justify-center shadow-glow animate-glow-pulse">
                 <Shield className="w-5 h-5 text-white" />
               </div>
               <span className="text-2xl font-bold text-gradient">MedVault</span>
